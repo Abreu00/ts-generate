@@ -1,9 +1,9 @@
-package json_output
+package config_files
 
 import "os"
 
 var permissions = os.FileMode(0644)
 
-type Output interface {
+type CongigFile interface {
 	Write()
 }

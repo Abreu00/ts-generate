@@ -1,4 +1,4 @@
-package json_output
+package config_files
 
 import (
 	"encoding/json"
