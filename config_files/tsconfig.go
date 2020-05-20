@@ -35,9 +35,9 @@ func NewTsconfig() Tsconfig {
 	config := Tsconfig{}
 	config.Target = "ES2017"
 	config.Module = "commonjs"
-	config.OutDir = "./"
-	config.RootDir = "./"
-	config.Module = "node"
+	config.OutDir = "./dist"
+	config.RootDir = "./src"
+	config.ModuleResolution = "node"
 	config.Strict = true
 	config.EsModuleInterop = true
 	config.ExperimentalDecorators = true

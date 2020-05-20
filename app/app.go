@@ -11,29 +11,32 @@ import (
 
 var app = cli.NewApp()
 
+var appName = "ts-generate"
+var appAuthor = &cli.Author{Name: "Fábio de Abreu", Email: "fabiowabreu@gmail.com"}
+var appUsage = "Generates a Typescript project template with TypeOrm"
+
 func appAction(c *cli.Context) error {
 	generateConfig()
-	generateDirs()
+	generateStructure()
 
 	manager := c.String("manager")
 
+	var cmd *exec.Cmd
+
 	if manager == "yarn" {
-		cmd := exec.Command("yarn", "init", "-y")
-		stdout, err := cmd.Output()
-		fmt.Printf(string(stdout))
-		return err
+		cmd = exec.Command("yarn", "init", "-y")
 	} else {
-		cmd := exec.Command("npm", "init", "-y")
-		stdout, err := cmd.Output()
-		fmt.Printf(string(stdout))
-		return err
+		cmd = exec.Command("npm", "init", "-y")
 	}
+	stdout, err := cmd.Output()
+	fmt.Printf(string(stdout))
+	return err
 }
 
 func CreateApp() {
 	app := &cli.App{
-		Name:  "ts-generate",
-		Usage: "Create a typescript project with TypeOrm",
+		Name:  appName,
+		Usage: appUsage,
 		Flags: []cli.Flag{
 			&cli.StringFlag{
 				Name:    "manager",
@@ -42,7 +45,8 @@ func CreateApp() {
 				Value:   "yarn",
 			},
 		},
-		Action: appAction,
+		Action:  appAction,
+		Authors: []*cli.Author{appAuthor},
 	}
 
 	err := app.Run(os.Args)

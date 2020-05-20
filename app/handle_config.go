@@ -1,10 +1,8 @@
 package app
 
-import "github.com/Abreu00/ts_tool/config_files"
+import "github.com/Abreu00/ts-generate/config_files"
 
 func generateConfig() {
-	var ts = config_files.NewTsconfig()
-	ts.Write()
-	var o = config_files.NewOrmConfig()
-	o.Write()
+	config_files.NewTsconfig().Write()
+	config_files.NewOrmConfig().Write()
 }

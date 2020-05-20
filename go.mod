@@ -1,4 +1,4 @@
-module github.com/Abreu00/ts_tool
+module github.com/Abreu00/ts-generate
 
 go 1.14
 
